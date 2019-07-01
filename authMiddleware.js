@@ -32,5 +32,7 @@ module.exports = function (req, res, next) {
         res.statusCode = 401;
         res.end();
         return;
+    } else {
+        next();
     }
 }
