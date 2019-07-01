@@ -3,15 +3,17 @@ import { Cart } from './cart.model';
 
 @Injectable()
 export class Order {
-    public id: number;
-    public name: string;
-    public address: string;
-    public city: string;
-    public state: string;
-    public zip: string;
-    public country: string;
-    public shipped: boolean = false;
+    id: number;
+    name: string;
+    address: string;
+    city: string;
+    state: string;
+    zip: string;
+    country: string;
+    shipped = false;
+
     constructor(public cart: Cart) { }
+
     clear() {
         this.id = null;
         this.name = this.address = this.city = null;
