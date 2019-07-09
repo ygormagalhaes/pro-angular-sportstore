@@ -8,6 +8,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { StoreComponent } from './store/store.component';
 import { StoreFirstGuard } from './store-first.guard';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { StoreFirstGuard } from './store-first.guard';
       { path: 'checkout', component: CheckoutComponent, canActivate: [StoreFirstGuard] },
       { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
       { path: '**', redirectTo: '/store' }
-    ])
+    ]),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [StoreFirstGuard],
   bootstrap: [AppComponent]
